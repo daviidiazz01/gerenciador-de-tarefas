@@ -1,0 +1,131 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #f2f2f3;
+    color: #333;
+    font-family: "Oswald", sans-serif;
+}
+
+.container {
+    background: #fff;
+    max-width: 450px;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 12px;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.form {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.form form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.form label {
+    font-weight: bold;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.form input {
+    height: 32px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    padding-left: 12px;
+    border: 1px solid #999;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form input:focus {
+    background: #f0f0f5;
+}
+
+.form button {
+    height: 32px;
+    width: 100%; 
+    margin-top: 4px;
+    margin-bottom: 4px;
+    padding-left: 12px;
+    border: 1px solid #999;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background: #ab47bc;
+    color:#fff;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.form button:hover{
+    background-color: #ce93d8;
+}
+
+
+.form button:focus {
+    outline: none;
+}
+
+.separator{
+    background-color: #bbb;
+    height: 2px;
+    border-radius: 1px;
+}
+
+.list_tasks{
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.list_tasks ul {
+    list-style: none;
+}
+
+.list_tasks ul li{
+    height: 54px;
+    width: 100%; 
+    margin-top: 4px;
+    margin-bottom: 4px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background: #4db6ac;
+    color:#fff;
+    cursor: pointer;
+    padding: 12px;
+    display: flex;
+    
+    align-items: center;
+    transition: background 0.3s;
+
+}
+
+.list_tasks ul li:hover{
+    background:#80cbc4;
+}
+
+.footer{
+    background: #f0f0f5;
+    border-radius: 4px;
+    padding: 12px;
+}
+
+.footer p{
+    color: #999;
+    font-size: 12px;
+}
