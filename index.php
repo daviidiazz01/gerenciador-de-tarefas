@@ -1,6 +1,12 @@
 <?php
 session_start()
-    if()
+    if (!isset ($session ['tasks'] ) ) {
+        $_SESSION["tasks"] = array();
+    }
+
+    if(isset)($_GET['task_name'] ) ) {
+        array_push($_SESSION['tasks'],$_GET)
+    }
 
 ?>
 
