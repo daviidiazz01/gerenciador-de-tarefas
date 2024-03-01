@@ -12,7 +12,12 @@ if (isset($_GET['task_name'])) {
 
 if (isset($_GET['clear'])) {
     unset($_SESSION['tasks']);
-    unset($_GET['task_name']);
+    unset($_GET['clear']);
+}
+
+if(isset($_GET['key'])){
+    array_splice($_SESSION['tasks'], $_GET['key'], 1)
+    unset($GET['ket']);
 }
 ?>
 
@@ -24,7 +29,7 @@ if (isset($_GET['clear'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https: //fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>Gerenciador de tarefas- DD</title>
 </head>
@@ -48,20 +53,28 @@ if (isset($_GET['clear'])) {
             if (isset($_SESSION['tasks'])) {
                 echo "<ul>";
                 foreach ($_SESSION['tasks'] as $key => $task) {
-                    echo "<li>$task</li>";
+                    echo "<li>
+                        <span>$task</span>
+                        <button type='button' class='btn-clear' onclick='deletar$key()'>remover</button>
+                        
+                        <script>
+                            function deletar$key(){
+                                if (confirm('confirmar remoção!')) {
+                                    window.location = 'http://localhost:8000/?key=$key';
+                                }                            
+                                return false;
+                            }
+                        </script>
+                        </li>";
                 }
                 echo "</ul>";
             }
-
-
             ?>
 
             <form action="" method="get">
                 <input type="hidden" name="clear" value="clear">
                 <button type="submit" class="btn-clear">Limpar Tarefas</button>
-        </form>
-
-
+            </form>
         </div>
         <div class="footer">
             <p>Desenvolvido por @davidiaz</p>
