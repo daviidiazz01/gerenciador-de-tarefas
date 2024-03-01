@@ -7,7 +7,12 @@ if (!isset($_SESSION['tasks'])) {
 
 if (isset($_GET['task_name'])) {
     array_push($_SESSION['tasks'], $_GET['task_name']);
-    unset($_GET['task_name']); 
+    unset($_GET['task_name']);
+}
+
+if (isset($_GET['clear'])) {
+    unset($_SESSION['tasks']);
+    unset($_GET['task_name']);
 }
 ?>
 
@@ -17,7 +22,9 @@ if (isset($_GET['task_name'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https: //fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https: //fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>Gerenciador de tarefas- DD</title>
 </head>
@@ -38,14 +45,23 @@ if (isset($_GET['task_name'])) {
         </div>
         <div class="list_tasks">
             <?php
-            if(isset($_SESSION['tasks'])) {
+            if (isset($_SESSION['tasks'])) {
                 echo "<ul>";
-                foreach($_SESSION['tasks'] as $key => $task) {
-                    echo "<li>$task</li>"; 
+                foreach ($_SESSION['tasks'] as $key => $task) {
+                    echo "<li>$task</li>";
                 }
                 echo "</ul>";
             }
+
+
             ?>
+
+            <form action="" method="get">
+                <input type="hidden" name="clear" value="clear">
+                <button type="submit" class="btn-clear">Limpar Tarefas</button>
+        </form>
+
+
         </div>
         <div class="footer">
             <p>Desenvolvido por @davidiaz</p>

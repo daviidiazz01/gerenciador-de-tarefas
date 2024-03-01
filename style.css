@@ -119,6 +119,26 @@ body {
     background:#80cbc4;
 }
 
+.btn-clear{
+    background: #ef5350;
+    padding: 0 12px;
+    color: #fff;
+    border: none;
+    height: 32px;
+    border: none;
+    border-radius: 4px;
+
+
+}
+
+.btn-clear:hover{
+    background: #ef9a9a;
+    padding: 12px;
+    color: #fff;
+    border: none;
+    transition: background 0.3s;
+}
+
 .footer{
     background: #f0f0f5;
     border-radius: 4px;
