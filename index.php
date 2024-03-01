@@ -1,15 +1,15 @@
 <?php
-session_start()
-    if (!isset ($session ['tasks'] ) ) {
-        $_SESSION["tasks"] = array();
-    }
+session_start();
 
-    if(isset)($_GET['task_name'] ) ) {
-        array_push($_SESSION['tasks'],$_GET)
-    }
+if (!isset($_SESSION['tasks'])) {
+    $_SESSION["tasks"] = array();
+}
 
+if (isset($_GET['task_name'])) {
+    array_push($_SESSION['tasks'], $_GET['task_name']);
+    unset($_GET['task_name']); 
+}
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,25 +29,27 @@ session_start()
         </div>
         <div class="form">
             <form action="" method="get">
-           <label for="task_name">Tarefa:</label>
-            <input type="text" name="task_name" placeholder="Digite a tarefa">
+                <label for="task_name">Tarefa:</label>
+                <input type="text" name="task_name" placeholder="Digite a tarefa">
+                <button type="submit">Cadastrar tarefa</button>
             </form>
-            <button type="submit">Cadastrar tarefa</button>
         </div>
         <div class="separator">
         </div>
         <div class="list_tasks">
-            <ul>
-                <li>Tarefa 1</li>
-                <li>Tarefa 2</li>
-                <li>Tarefa 3</li>
-            </ul>
+            <?php
+            if(isset($_SESSION['tasks'])) {
+                echo "<ul>";
+                foreach($_SESSION['tasks'] as $key => $task) {
+                    echo "<li>$task</li>"; 
+                }
+                echo "</ul>";
+            }
+            ?>
         </div>
         <div class="footer">
             <p>Desenvolvido por @davidiaz</p>
         </div>
-       
-
     </div>
 </body>
 
