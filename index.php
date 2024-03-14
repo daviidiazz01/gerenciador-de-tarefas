@@ -6,8 +6,12 @@ if (!isset($_SESSION['tasks'])) {
 }
 
 if (isset($_GET['task_name'])) {
-    array_push($_SESSION['tasks'], $_GET['task_name']);
-    unset($_GET['task_name']);
+    if ($_GET['task_name'] != "") {
+        array_push($_SESSION['tasks'], $_GET['task_name']);
+        unset($_GET['task_name']);
+    } else {
+        $_SESSION['message'] =  "o campo nome da tarefa não pode estar vazio";
+    }
 }
 
 if (isset($_GET['clear'])) {
@@ -15,10 +19,13 @@ if (isset($_GET['clear'])) {
     unset($_GET['clear']);
 }
 
-if(isset($_GET['key'])){
-    array_splice($_SESSION['tasks'], $_GET['key'], 1)
-    unset($GET['ket']);
+if (isset($_GET['key'])) {
+    array_splice($_SESSION['tasks'], $_GET['key'], 1);
+    unset($_GET['key']);
 }
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -45,6 +52,14 @@ if(isset($_GET['key'])){
                 <input type="text" name="task_name" placeholder="Digite a tarefa">
                 <button type="submit">Cadastrar tarefa</button>
             </form>
+            <?php
+            if (isset($_SESSION['message'])) {
+                echo "<p style='color: #EF5350';>" . $_SESSION['message'] . "</p>";
+            }
+            ?>
+
+
+
         </div>
         <div class="separator">
         </div>
