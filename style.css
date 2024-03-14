@@ -98,8 +98,11 @@ body {
 }
 
 .list_tasks ul li{
+    display: flex;
     height: 54px;
     width: 100%; 
+    justify-content: space-between;
+    align-items: center;
     margin-top: 4px;
     margin-bottom: 4px;
     border-radius: 4px;
@@ -108,7 +111,7 @@ body {
     color:#fff;
     cursor: pointer;
     padding: 12px;
-    display: flex;
+    
     
     align-items: center;
     transition: background 0.3s;

@@ -53,8 +53,10 @@ if (isset($_GET['key'])) {
                 <button type="submit">Cadastrar tarefa</button>
             </form>
             <?php
-            if (isset($_SESSION['message'])) {
+            if (isset($_SESSION['message']) && !empty($_SESSION['message'])) {
                 echo "<p style='color: #EF5350';>" . $_SESSION['message'] . "</p>";
+                unset($_SESSION['message']);
+                
             }
             ?>
 
