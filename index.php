@@ -5,15 +5,6 @@ if (!isset($_SESSION['tasks'])) {
     $_SESSION["tasks"] = array();
 }
 
-if (isset($_GET['task_name'])) {
-    if ($_GET['task_name'] != "") {
-        array_push($_SESSION['tasks'], $_GET['task_name']);
-        unset($_GET['task_name']);
-    } else {
-        $_SESSION['message'] =  "o campo nome da tarefa não pode estar vazio";
-    }
-}
-
 if (isset($_GET['clear'])) {
     unset($_SESSION['tasks']);
     unset($_GET['clear']);
@@ -47,9 +38,14 @@ if (isset($_GET['key'])) {
             <h1>Gerenciador de tarefas</h1>
         </div>
         <div class="form">
-            <form action="" method="get">
+            <form action="task.php" method="post">
+                <input type="hidden" name="insert" value="insert">
                 <label for="task_name">Tarefa:</label>
                 <input type="text" name="task_name" placeholder="Digite a tarefa">
+                <label for="tasl_description">Descrição:</label>
+                <input type="text" name="task_description" placeholder="Descrição da Tarefa">
+                <label for="task_date">Data</label>
+                <input type="date" name="task_date">
                 <button type="submit">Cadastrar tarefa</button>
             </form>
             <?php
