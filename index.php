@@ -10,12 +10,6 @@ if (isset($_GET['clear'])) {
     unset($_GET['clear']);
 }
 
-if (isset($_GET['key'])) {
-    array_splice($_SESSION['tasks'], $_GET['key'], 1);
-    unset($_GET['key']);
-}
-
-
 
 ?>
 
@@ -52,7 +46,6 @@ if (isset($_GET['key'])) {
             if (isset($_SESSION['message']) && !empty($_SESSION['message'])) {
                 echo "<p style='color: #EF5350';>" . $_SESSION['message'] . "</p>";
                 unset($_SESSION['message']);
-                
             }
             ?>
 
@@ -67,13 +60,13 @@ if (isset($_GET['key'])) {
                 echo "<ul>";
                 foreach ($_SESSION['tasks'] as $key => $task) {
                     echo "<li>
-                        <span>$task</span>
-                        <button type='button' class='btn-clear' onclick='deletar$key()'>remover</button>
+                    <span>" . $task['task_name'] . "</span>
+                    button type='button' class='btn-clear' onclick='deletar$key()'>remover</button>
                         
                         <script>
                             function deletar$key(){
                                 if (confirm('confirmar remoção!')) {
-                                    window.location = 'http://localhost:8000/?key=$key';
+                                    window.location = 'http://localhost:8100/task.php?key=$key';
                                 }                            
                                 return false;
                             }
